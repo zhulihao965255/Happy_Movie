@@ -54,3 +54,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   ```
 
 移动端的happy_me  主要使用rem属性。配合使用[rem.js](https://github.com/zhulihao965255/happy_me/blob/master/src/assets/js/rem.js),实现移动端的适配。
+
+
+优化了整体的框架，每个模块的标题，颜色，都放在了App.vue中，根据被点击的模块传参改变标题和对应的颜色。这样重用性会更好，修改添加也比较有效。这样在添加一个模块时，只用在App，Footer中添加一下，不用每个再引入一下Header,Footer.  App.vue是一个总的组件。

@@ -1,19 +1,17 @@
 <template>
-    <div class="header" :style="{background:bgc}">
-        <span>首页</span>
+    <div class="header">
+        <span><router-link @click.native="$emit('change','Movie')" to="/">首页</router-link></span>
         <slot name="title">Movie</slot>
     </div>
 </template>
 <script>
 export default {
-  props:['bgc']  
 }
 </script>
 <style scoped>
     .header{
         height: 1rem;
         width: 100%;
-        /* background-color: darkturquoise; */
         position: fixed;
         top: 0; 
         color: snow;
@@ -23,7 +21,12 @@ export default {
         left: .1rem;
         line-height: 1rem;
     }
+    span a{
+        outline: none;
+        color: snow;
+    }
     h2{
         line-height: 1rem;
+        text-align: center
     }
 </style>
