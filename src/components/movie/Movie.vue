@@ -10,14 +10,17 @@
                         <p class="movie-name">{{movie.nm}}</p>
                         <p>主演:&nbsp;&nbsp;&nbsp;{{movie.star}}</p>
                         <p>导演:&nbsp;&nbsp;&nbsp;{{movie.dir}}</p>
-                        <p>{{movie.rt}}</p>
                         <p>{{movie.cat}}</p>
+                        <p>播放讯息:{{ movie.showInfo }}</p>
                     </div>
                 </div>  
             </li>
         </ul>
+        <div class="loading" v-show="isload">
+            <img src="/static/img/loading.gif" alt="">
+        </div>
         <div class="movie-over" v-show="show">
-            数据已经到底了!
+            我是有底线的!
         </div>
     </div>
 </template>
@@ -27,7 +30,8 @@ export default {
     data(){
         return {
             movielist:[],
-            show:false
+            show:false,
+            isload:true
         }
     },
     methods:{
@@ -39,8 +43,9 @@ export default {
                     this.show=true;
                 }
                 this.movielist=this.movielist.concat(res.data.data.movies);
+                this.isload=false;
             }).catch(res=>{
-                console.log('error');
+                alert('获取数据失败');
             })
         }
     },
@@ -52,6 +57,11 @@ export default {
             let sh=document.documentElement.scrollHeight;
             if(st+ch==sh){
                 this.getData();
+                if(this.show==true){
+                    this.isload=false;
+                }else{
+                    this.isload=true;
+                }
             }
         }
     }
@@ -63,9 +73,12 @@ export default {
     .movies{
         margin: 1rem 0;
         margin-left: .1rem;
+        font-size: .3rem;
     }
     .movie{
         display: flex;
+        border-bottom: 1px solid forestgreen;
+        margin-bottom: .1rem;
     }
     .movie-img{
         flex-grow: 1;
@@ -81,5 +94,12 @@ export default {
     }
     .movie-over{
         text-align: center;
+    }
+    .loading{
+        text-align: center;
+    }
+    .loading img{
+        width: 1rem;
+        height: 1rem;
     }
 </style>

@@ -1,13 +1,16 @@
 <template>
     <ul class="footer">
         <li><router-link @click.native="$emit('change','Movie')" to="/">电影</router-link></li>
-        <li><router-link @click.native="$emit('change','Music')" to="/music">音乐</router-link></li>
-        <li><router-link @click.native="$emit('change','Book')" to="/book">书籍</router-link></li>
-        <li><router-link @click.native="$emit('change','Photo')" to="/photo">照片</router-link></li>
+        <li><router-link @click.native="$emit('change','Mine')" :to="ref">我的</router-link></li>
     </ul>
 </template>
 <script>
 export default {
+    data(){
+        return {
+            ref:'/self'
+        }
+    }
 }
 </script>
 <style scoped>

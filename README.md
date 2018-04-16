@@ -57,3 +57,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 优化了整体的框架，每个模块的标题，颜色，都放在了App.vue中，根据被点击的模块传参改变标题和对应的颜色。这样重用性会更好，修改添加也比较有效。这样在添加一个模块时，只用在App，Footer中添加一下，不用每个再引入一下Header,Footer.  App.vue是一个总的组件。
+
+做了重大修改  删除了音乐，读书，照片组件，添加了关于个人的组件。里面主要会包含个人数据，登录组件，注册组件，个人数据组件等。
