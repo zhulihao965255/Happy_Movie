@@ -35,17 +35,13 @@ export default new Router({
     name: 'mydata',
     component: MyData,
     beforeEnter(to,from,next){
-        // console.log(to);
-        // console.log(from);
-        // next();
-          tomydata=true; 
-          next();
+        if(tomydata){
+          username=to.params.name;          
+          next();      
+        }else{
+          next({path:'/self'});
+        }
     }
   },
-  // {
-  //   path: '/self/login',
-  //   name: 'login',
-  //   component: Login
-  // }
-]
+ ]
 })

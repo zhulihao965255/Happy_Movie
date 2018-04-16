@@ -21,9 +21,10 @@ export default {
   },
   methods: {
     login(){     
-        if(this.password===cookie.searchCookie(this.name)){
+        if(this.password===cookie.search(this.name)){
             tomydata=true;
-            this.$router.push(`/mydata/${this.name}`);
+            username=this.name;
+            this.$router.push(`/mydata/${username}`);
         }else{
             alert('账号和密码不匹配');
         }

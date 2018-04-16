@@ -17,6 +17,10 @@
             <div class="loading" v-show="isload">
                 <img src="/static/img/loading.gif" alt="">
             </div>
+            <div v-if="showInput">
+                <textarea v-model="myComment" class="form-control self-comment" rows="3"></textarea>
+                <button @click="postMyComment" type="button" class="btn btn-default btn-lg active">Button</button>
+            </div>
         </div>
 </template>
 
@@ -28,7 +32,9 @@ export default {
             comments:[],
             offset:0,
             isload:true,
-            showMore:false
+            showMore:false,
+            showInput:false,
+            myComment:''
         }
     },
     methods:{
@@ -43,6 +49,7 @@ export default {
                 })
                 this.isload=false;
                 this.showMore=true;
+                this.showInput=true;
             }).catch(res=>{
                 alert('数据获取失败');
             });           
@@ -50,6 +57,15 @@ export default {
         getMoreComment(){
             this.offset+=5;
             this.getComment();
+        },
+        postMyComment(){
+            if(tomydata){
+                let val=cookie.search(username);
+                localStorage.setItem(username+val,this.$route.params.movieid+'---'+this.myComment);
+                this.myComment='';
+            }else{
+                alert('请先登录');
+            }
         }
     },
     created(){
@@ -100,5 +116,11 @@ export default {
         top: 1rem;
         right:.1rem;
         color: firebrick;
+    }
+    .self-comment{
+       font-size: .3rem; 
+    }
+    button{
+        outline: none;
     }
 </style>

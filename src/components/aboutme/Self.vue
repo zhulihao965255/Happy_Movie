@@ -32,7 +32,7 @@ export default {
     },
     beforeRouteEnter (to, from, next) {
       if(tomydata){
-          next({path:'/mydata'});
+          next({path:`/mydata/${username}`});
       }else{
           next();
       }     

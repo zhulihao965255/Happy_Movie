@@ -31,8 +31,10 @@ export default {
                 if(this.name==''||this.password==''||this.oPassword==''){
                     alert('不能为空');
                 }else{
-                    cookie.addCookie(this.name,this.password,1);
-                    this.$router.push('/mydata');
+                    cookie.add(this.name,this.password,1);
+                    tomydata=true;
+                    username=this.name;
+                    this.$router.push(`/mydata/${username}`);
                 }
             }
     },

@@ -8,7 +8,7 @@
 export default {
     data(){
         return {
-            ref:'/self'
+            ref:tomydata == false ? '/self' : `/mydata/${username}`
         }
     }
 }
